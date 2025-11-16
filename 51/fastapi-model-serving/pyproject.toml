@@ -1,0 +1,12 @@
+[project]
+name = "fastapi-model-serving"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.121.2",
+    "skl2onnx",
+    "onnxruntime",
+    "scikit-learn",
+    "numpy",
+    "pandas"
+]
