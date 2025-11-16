@@ -8,5 +8,6 @@ dependencies = [
     "onnxruntime",
     "scikit-learn",
     "numpy",
-    "pandas"
+    "pandas",
+    "litserve"
 ]
