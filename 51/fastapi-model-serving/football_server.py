@@ -63,7 +63,7 @@ class InferenceEngine(ls.LitAPI):
             [self.label_name_90], {self.input_name_90: input_data}
         )[0]
 
-        # Return the same structure as your PredictionOutput model
+        # Return output of models
         return {
             "winning_bid_10th_percentile": round(float(pred_onx_10[0]), 2),
             "winning_bid_50th_percentile": round(float(pred_onx_50[0]), 2),
