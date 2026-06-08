@@ -15,7 +15,7 @@ The CLI acts as a thin layer over the SDK, allowing users to access API function
 
 The following diagram shows the relationship between users, the CLI, the SDK, and the underlying Flights API.
 
-![Air Travel CLI Architecture](images/air_travel_cli_sdk.png)
+![Air Travel CLI Architecture](images/anchor_project_cli_sdk.png)
 
 The Air Travel CLI provides a user-friendly command-line interface that delegates API operations to the Air Travel SDK. The SDK handles request construction, HTTP communication, response processing, and interaction with the Flights API.
 
