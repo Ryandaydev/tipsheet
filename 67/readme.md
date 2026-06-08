@@ -1,6 +1,6 @@
 # Tip Sheet #67 - Anchor Project CLI using Typer and the Air Travel SDK
 
-This week I explained the details of building the CLI for my anchor project. The code for these is in a separate repo, but this file gives a summary.
+This week I explained the details of building the CLI for my anchor project. The code for these components is available in the project repository, but this file provides a summary of the overall design and implementation.
 
 ## Project Overview
 
@@ -11,17 +11,17 @@ The Air Travel project consists of two primary components:
 
 The CLI acts as a thin layer over the SDK, allowing users to access API functionality directly from the terminal.
 
+### Overall Architecture
+
+The following diagram shows the relationship between users, the CLI, the SDK, and the underlying Flights API.
+
+![Air Travel CLI Architecture](images/air_travel_cli_sdk.png)
+
+The Air Travel CLI provides a user-friendly command-line interface that delegates API operations to the Air Travel SDK. The SDK handles request construction, HTTP communication, response processing, and interaction with the Flights API.
+
 ## Architecture
 
-The project is intentionally structured so that API logic lives in the SDK while the CLI focuses on the user experience.
-
-```text
-CLI
-  ↓
-Air Travel SDK
-  ↓
-Air Travel API
-```
+The architecture shown above reflects a deliberate separation of concerns: the SDK contains the API communication logic, while the CLI focuses on the user experience.
 
 ### Air Travel SDK
 
@@ -101,6 +101,68 @@ Display the CLI version:
 ```bash
 air-travel --version
 ```
+
+## Installation
+
+The CLI and SDK can be installed locally using wheel distributions and uv.
+
+From the `cli` directory:
+
+```bash
+uv tool install \
+  dist/air_travel_cli-0.2.0-py3-none-any.whl \
+  --with ../sdk/dist/air_travel-0.2.0-py3-none-any.whl
+```
+
+Verify the installation:
+
+```bash
+uv tool list
+```
+
+Expected output:
+
+```text
+air-travel-cli v0.2.0
+- air-travel
+```
+
+Verify the installed version:
+
+```bash
+air-travel --version
+```
+
+Expected output:
+
+```text
+air-travel-cli 0.2.0
+```
+
+Test connectivity to the API:
+
+```bash
+air-travel health
+```
+
+Retrieve a sample flight record:
+
+```bash
+air-travel flights --carrier AA --limit 1
+```
+
+A useful validation step is to leave the project directory entirely and run the commands again:
+
+```bash
+cd ~
+
+air-travel --version
+air-travel health
+```
+
+If these commands succeed, the CLI is running independently of the source code tree exactly as an end user would experience it.
+
+This installation process mirrors the future publishing workflow where both the SDK and CLI will be distributed as installable Python packages.
 
 ## Repository
 
