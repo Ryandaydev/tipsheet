@@ -109,6 +109,12 @@ The CLI and SDK can be installed locally using wheel distributions and uv.
 From the `cli` directory:
 
 ```bash
+uv build
+
+```
+
+
+```bash
 uv tool install \
   dist/air_travel_cli-0.2.0-py3-none-any.whl \
   --with ../sdk/dist/air_travel-0.2.0-py3-none-any.whl
